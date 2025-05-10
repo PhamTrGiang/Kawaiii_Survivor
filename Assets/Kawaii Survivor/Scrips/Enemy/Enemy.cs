@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     private Player player;
 
     [Header("Spawn Sequence Relasted")]
-    [SerializeField] private SpriteRenderer renderer;
+    [SerializeField] private SpriteRenderer enenmyRenderer;
     [SerializeField] private SpriteRenderer spawnIndicator;
 
     [Header("Effects")]
@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
 
     private void SetRenderersVisibility(bool visibility)
     {
-        renderer.enabled = visibility;
+        enenmyRenderer.enabled = visibility;
         spawnIndicator.enabled = !visibility;
     }
     // Update is called once per frame
@@ -96,6 +96,8 @@ public class Enemy : MonoBehaviour
     private void Attack()
     {
         attackTimer = 0;
+
+        player.TakeDamage(damage);
     }
     private void PassAway()
     {
