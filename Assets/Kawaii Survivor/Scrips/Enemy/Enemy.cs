@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyMovement))]
@@ -8,12 +9,20 @@ public class Enemy : MonoBehaviour
     [Header("Compenents")]
     private EnemyMovement movement;
 
+    [Header("Health")]
+    [SerializeField] private int maxHealth;
+    private int health;
+    [SerializeField] private TextMeshPro healthText;
+
+
     [Header("Elements")]
     private Player player;
 
     [Header("Spawn Sequence Relasted")]
     [SerializeField] private SpriteRenderer enenmyRenderer;
     [SerializeField] private SpriteRenderer spawnIndicator;
+    private bool hasSpawned;
+
 
     [Header("Effects")]
     [SerializeField] private ParticleSystem passAwayParticles;
@@ -23,17 +32,20 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private float attackFrequency;
     [SerializeField] private float playerDetectionRadius;
+    private float attackDelay;
+    private float attackTimer;
 
     [Header("DEBUG")]
     [SerializeField] private bool gizmos;
 
-    private float attackDelay;
-    private float attackTimer;
 
-    private bool hasSpawned;
+
     // Start is called before the first frame update
     void Start()
     {
+        health = maxHealth;
+        healthText.text = health.ToString();
+
         movement = GetComponent<EnemyMovement>();
 
         player = FindFirstObjectByType<Player>();
@@ -99,6 +111,17 @@ public class Enemy : MonoBehaviour
 
         player.TakeDamage(damage);
     }
+
+    public void TakeDamage(int damage)
+    {
+        int realDamage = Mathf.Min(damage, health);
+        health -= realDamage;
+
+        healthText.text = health.ToString();
+
+        if (health <= 0)
+            PassAway();
+    }
     private void PassAway()
     {
         // Unparent the particle & play them
@@ -116,5 +139,6 @@ public class Enemy : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, playerDetectionRadius);
+
     }
 }
