@@ -5236,7 +5236,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6841950467144496978}
-  - component: {fileID: 2576765139871026038}
+  - component: {fileID: 4581002946609282722}
   - component: {fileID: 5387626578050830974}
   - component: {fileID: 7138800845005387831}
   m_Layer: 6
@@ -5265,7 +5265,7 @@ Transform:
   - {fileID: 756251945998886317}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2576765139871026038
+--- !u!114 &4581002946609282722
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5278,15 +5278,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  healthText: {fileID: 3556198118320617363}
-  enenmyRenderer: {fileID: 0}
+  enenmyRenderer: {fileID: 5822953097689250677}
   spawnIndicator: {fileID: 8823812223326223481}
   collider: {fileID: 7138800845005387831}
   passAwayParticles: {fileID: 8426199608593361068}
   damage: 1
   attackFrequency: 1
   playerDetectionRadius: 0.5
-  gizmos: 1
+  gizmos: 0
 --- !u!114 &5387626578050830974
 MonoBehaviour:
   m_ObjectHideFlags: 0
