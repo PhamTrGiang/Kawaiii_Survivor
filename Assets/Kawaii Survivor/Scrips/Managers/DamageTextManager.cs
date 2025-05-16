@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,13 +16,15 @@ public class DamageTextManager : MonoBehaviour
     private void Awake()
     {
         Enemy.onDamageTaken += EnemyHitCallBack;
+        PlayerHealth.onAttackDodge += AttackDodgeCallback;
     }
 
     private void OnDestroy()
     {
         Enemy.onDamageTaken -= EnemyHitCallBack;
-
+        PlayerHealth.onAttackDodge -= AttackDodgeCallback;
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +33,7 @@ public class DamageTextManager : MonoBehaviour
 
     private DamageText CreateFunction()
     {
-        return Instantiate(damageTextPrefab,transform);
+        return Instantiate(damageTextPrefab, transform);
     }
     private void ActionOnGet(DamageText damageText)
     {
@@ -39,7 +42,7 @@ public class DamageTextManager : MonoBehaviour
 
     private void ActionOnRelease(DamageText damageText)
     {
-        damageText.gameObject.SetActive(true);
+        damageText.gameObject.SetActive(false);
     }
 
     private void ActionOnDestroy(DamageText damageText)
@@ -54,8 +57,20 @@ public class DamageTextManager : MonoBehaviour
         Vector3 spawnPosition = enemyPos + Vector2.up * 1.5f;
         damageTextInstance.transform.position = spawnPosition;
 
-        damageTextInstance.Animate(damage, isCriticalHit);
+        damageTextInstance.Animate(damage.ToString(), isCriticalHit);
 
-        LeanTween.delayedCall(1, ()=> damageTextPool.Release(damageTextInstance));
+        LeanTween.delayedCall(1, () => damageTextPool.Release(damageTextInstance));
+    }
+
+    private void AttackDodgeCallback(Vector2 playerPosition)
+    {
+        DamageText damageTextInstance = damageTextPool.Get();
+
+        Vector3 spawnPosition = playerPosition + Vector2.up * 1.5f;
+        damageTextInstance.transform.position = spawnPosition;
+
+        damageTextInstance.Animate("Dodged",false);
+
+        LeanTween.delayedCall(1, () => damageTextPool.Release(damageTextInstance));
     }
 }

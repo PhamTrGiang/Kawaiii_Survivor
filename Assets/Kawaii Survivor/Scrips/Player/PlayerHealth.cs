@@ -1,30 +1,93 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour
+using Random = UnityEngine.Random;
+
+public class PlayerHealth : MonoBehaviour, IPlayerStatsDependency
 {
     [Header("Settings")]
-    [SerializeField] private int maxHealth;
-    private int health;
+    [SerializeField] private int baseMaxHealth;
+    private float maxHealth;
+    private float health;
+    private float armor;
+    private float lifeSteal;
+    private float dodge;
+    private float healthRecoverySpeed;
+    private float healthRecoverySpeedTimer;
+    private float healthRecoverySpeedDuration;
+
 
     [Header("Elements")]
     [SerializeField] private Slider healthSlider;
     [SerializeField] private TextMeshProUGUI healthText;
 
+    [Header("Actions")]
+    public static Action<Vector2> onAttackDodge;
+
+    private void Awake()
+    {
+        Enemy.onDamageTaken += EnemyTookDamageCallback;
+    }
+
+    private void OnDestroy()
+    {
+        Enemy.onDamageTaken = EnemyTookDamageCallback;
+    }
+
+    private void EnemyTookDamageCallback(int damage, Vector2 enemyPos, bool isCriticalHit)
+    {
+        if (health >= maxHealth)
+            return;
+
+        float lifeStealValue = damage * lifeSteal;
+        float healthToAdd = Math.Min(lifeStealValue, (maxHealth - health));
+
+        health += healthToAdd;
+        UpdateUI();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
-        UpdateUI();
+
+    }
+
+    private void Update()
+    {
+        if (health < maxHealth)
+        {
+            RecoverHealth();
+        }
+    }
+
+    private void RecoverHealth()
+    {
+        healthRecoverySpeedTimer += Time.deltaTime;
+
+        if (healthRecoverySpeedTimer >= healthRecoverySpeedDuration)
+        {
+            healthRecoverySpeedTimer = 0;
+            float healthToAdd = Mathf.Min(.1f, maxHealth - health);
+
+            health += healthToAdd;
+            UpdateUI(); 
+        }
     }
 
     public void TakeDamage(int damage)
     {
-        int realDamage = Mathf.Min(damage, health);
+        if (ShouldDodge())
+        {
+            onAttackDodge?.Invoke(transform.position);
+            return;
+        }
+
+        float realDamage = damage * Mathf.Clamp(1 - (armor / 1000), 0, 1000);
+        realDamage = Mathf.Min(realDamage, health);
         health -= realDamage;
 
         UpdateUI();
@@ -32,16 +95,37 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0) PassAway();
     }
 
+    private bool ShouldDodge()
+    {
+        return Random.Range(0f, 101f) < dodge;
+    }
+
     private void PassAway()
     {
-        Debug.Log("dead");
-        SceneManager.LoadScene(0);
+        GameManager.instance.SetGameState(GameState.GAMEOVER);
     }
 
     private void UpdateUI()
     {
-        float healthBarValue = (float)health / maxHealth;
+        float healthBarValue = health / maxHealth;
         healthSlider.value = healthBarValue;
-        healthText.text = health + " / " + maxHealth;
+        healthText.text = (int)health + " / " + maxHealth;
+    }
+
+    public void UpdateStats(PlayerStatsManager playerStatsManager)
+    {
+        float addedHealth = playerStatsManager.GetStatValue(Stat.MaxHealth);
+        maxHealth = baseMaxHealth + (int)addedHealth;
+        maxHealth = Mathf.Max(maxHealth, 1);
+
+        health = maxHealth;
+        UpdateUI();
+
+        armor = playerStatsManager.GetStatValue(Stat.Armor);
+        lifeSteal = playerStatsManager.GetStatValue(Stat.Lifesteal) / 100;
+        dodge = playerStatsManager.GetStatValue(Stat.Dodge);
+
+        healthRecoverySpeed = Mathf.Max(.0001f,playerStatsManager.GetStatValue(Stat.HealthRecoverySpeed));
+        healthRecoverySpeedDuration = 1f / healthRecoverySpeed;
     }
 }
