@@ -97,17 +97,20 @@ public abstract class Enemy : MonoBehaviour
             PassAway();
     }
 
-    private void PassAway()
+    public void PassAway()
     {
         onPassAway?.Invoke(transform.position);
-        
-        // Unparent the particle & play them
+        PassAwayAfterWave();
+    }
+
+    public void PassAwayAfterWave()
+    {
         passAwayParticles.transform.SetParent(null);
         passAwayParticles.Play();
 
         Destroy(gameObject);
-
     }
+
 
     void OnDrawGizmos()
     {

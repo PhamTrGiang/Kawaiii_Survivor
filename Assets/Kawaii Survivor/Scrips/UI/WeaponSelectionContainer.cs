@@ -12,22 +12,34 @@ public class WeaponSelectionContainer : MonoBehaviour
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI nameText;
 
+    [Header("Stats")]
+    [SerializeField] private Transform statContainersParent;
+
     [field: SerializeField] public Button Button { get; private set; }
 
     [Header("Color")]
     [SerializeField] private Image[] levelDependentImages;
+    [SerializeField] private Image outLine;
 
-
-
-    public void Configure(Sprite sprite, string name, int level)
+    public void Configure(Sprite sprite, string name, int level, WeaponDataSO weaponData)
     {
         icon.sprite = sprite;
-        nameText.text = name;
+        nameText.text = name + $" (lvl {level + 1} )";
 
         Color imageColor = ColorHolder.GetColor(level);
+        nameText.color = imageColor;
+
+        outLine.color = ColorHolder.GetOutlineColor(level);
 
         foreach (Image image in levelDependentImages)
             image.color = imageColor;
+        Dictionary<Stat, float> calculatorStats = WeaponStatsCalculator.GetStats(weaponData, level);
+        ConfigureStatContiners(calculatorStats);
+    }
+
+    private void ConfigureStatContiners(Dictionary<Stat, float> calculatorStats)
+    {
+        StatContainerManager.GenerateStatContainers(calculatorStats, statContainersParent);
     }
 
     public void Select()

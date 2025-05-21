@@ -18,20 +18,11 @@ public class PlayerStatsManager : MonoBehaviour
         playerStats = playerData.BaseStats;
 
         foreach (KeyValuePair<Stat, float> kvp in playerStats)
-            addends.Add(kvp.Key,0);
+            addends.Add(kvp.Key, 0);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        UpdatePlayerStats();
-    }
+    void Start() => UpdatePlayerStats();
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void AddPlayerStat(Stat stat, float value)
     {
@@ -43,12 +34,8 @@ public class PlayerStatsManager : MonoBehaviour
         UpdatePlayerStats();
     }
 
-    public float GetStatValue(Stat stat)
-    {
-        float value = playerStats[stat] + addends[stat];
+    public float GetStatValue(Stat stat) => playerStats[stat] + addends[stat];
 
-        return value;
-    }
 
     private void UpdatePlayerStats()
     {

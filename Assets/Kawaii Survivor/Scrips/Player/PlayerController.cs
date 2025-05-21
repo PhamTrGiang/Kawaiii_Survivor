@@ -8,16 +8,17 @@ public class PlayerController : MonoBehaviour, IPlayerStatsDependency
 {
     [Header("Elements")]
     [SerializeField] private MobileJoystick playerJoystick;
+    private Rigidbody2D rig;
 
     [Header("Settings")]
     [SerializeField] private float baseMoveSpeed;
     private float moveSpeed;
 
-    private Rigidbody2D rig;
-    // Start is called before the first frame update
+
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
+        rig.velocity = Vector2.right;
     }
 
 

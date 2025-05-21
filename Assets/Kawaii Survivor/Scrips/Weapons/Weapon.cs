@@ -69,22 +69,20 @@ public abstract class Weapon : MonoBehaviour, IPlayerStatsDependency
     {
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, range);
-
     }
 
     public abstract void UpdateStats(PlayerStatsManager playerStatsManager);
 
     protected void ConfigureStats()
     {
-        float multiplier = 1 + (float)Level / 3;
-        damage = Mathf.RoundToInt(WeaponData.GetStatValue(Stat.Attack) * multiplier);
-        attackDelay = 1f / (WeaponData.GetStatValue(Stat.AttackSpeed) * multiplier);
+        Dictionary<Stat, float> calculatorStats = WeaponStatsCalculator.GetStats(WeaponData, Level);
 
-        criticalChance = Mathf.RoundToInt(WeaponData.GetStatValue(Stat.CriticalChance) * multiplier);
-        criticalPercent = WeaponData.GetStatValue(Stat.CriticalPercent) * multiplier;
 
-        if (WeaponData.Prefab.GetType() == typeof(RangeWeapon))
-            range = WeaponData.GetStatValue(Stat.Range) * multiplier;
+        damage = Mathf.RoundToInt(calculatorStats[Stat.Attack]);
+        attackDelay = 1f / calculatorStats[Stat.AttackSpeed];
+        criticalChance = Mathf.RoundToInt(calculatorStats[Stat.CriticalChance]);
+        criticalPercent = calculatorStats[Stat.CriticalPercent];
+        range = calculatorStats[Stat.Range];
     }
 
     public void UpgradeTo(int targetLevel)
