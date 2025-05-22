@@ -11,6 +11,7 @@ public class PlayerStatsManager : MonoBehaviour
     [Header("Settings")]
     private Dictionary<Stat, float> playerStats = new Dictionary<Stat, float>();
     private Dictionary<Stat, float> addends = new Dictionary<Stat, float>();
+    private Dictionary<Stat, float> objectAddends = new Dictionary<Stat, float>();
 
 
     private void Awake()
@@ -18,7 +19,10 @@ public class PlayerStatsManager : MonoBehaviour
         playerStats = playerData.BaseStats;
 
         foreach (KeyValuePair<Stat, float> kvp in playerStats)
+        {
             addends.Add(kvp.Key, 0);
+            objectAddends.Add(kvp.Key, 0);
+        }
     }
 
     void Start() => UpdatePlayerStats();
@@ -34,8 +38,16 @@ public class PlayerStatsManager : MonoBehaviour
         UpdatePlayerStats();
     }
 
-    public float GetStatValue(Stat stat) => playerStats[stat] + addends[stat];
+    public void AddObject(Dictionary<Stat, float> objectStats)
+    {
+        foreach (KeyValuePair<Stat, float> kvp in objectStats)
+            objectAddends[kvp.Key] += kvp.Value;
 
+        UpdatePlayerStats();
+
+    }
+
+    public float GetStatValue(Stat stat) => playerStats[stat] + addends[stat]+ objectAddends[stat];
 
     private void UpdatePlayerStats()
     {
