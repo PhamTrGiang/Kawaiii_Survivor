@@ -47,12 +47,19 @@ public class PlayerStatsManager : MonoBehaviour
 
     }
 
-    public float GetStatValue(Stat stat) => playerStats[stat] + addends[stat]+ objectAddends[stat];
+    public void RemoveObjectStats(Dictionary<Stat, float> objectStats)
+    {
+        foreach (KeyValuePair<Stat, float> kvp in objectStats)
+            objectAddends[kvp.Key] -= kvp.Value;
+        UpdatePlayerStats();
+    }
+
+    public float GetStatValue(Stat stat) => playerStats[stat] + addends[stat] + objectAddends[stat];
 
     private void UpdatePlayerStats()
     {
         IEnumerable<IPlayerStatsDependency> playerStatsDependencies =
-            FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include,FindObjectsSortMode.None)
+            FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None)
             .OfType<IPlayerStatsDependency>();
 
         foreach (IPlayerStatsDependency dependency in playerStatsDependencies)
