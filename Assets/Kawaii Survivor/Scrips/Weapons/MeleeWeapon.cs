@@ -74,6 +74,8 @@ public class MeleeWeapon : Weapon
         state = State.Attack;
 
         animator.speed = 1f / attackDelay;
+
+        PlayAttackSound();
     }
 
     private void Attacking()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using System;
 
 public class RangeWeapon : Weapon
 {
@@ -11,6 +12,9 @@ public class RangeWeapon : Weapon
 
     [Header("Pooling")]
     private ObjectPool<Bullet> bulletPool;
+
+    [Header("Actions")]
+    public static Action onBulletShot;
 
     // Start is called before the first frame update
     void Start()
@@ -85,6 +89,10 @@ public class RangeWeapon : Weapon
 
         Bullet bulletInstance = bulletPool.Get();
         bulletInstance.Shoot(damage, transform.up, isCriticalHit);
+
+        onBulletShot?.Invoke();
+
+        PlayAttackSound();
     }
 
     public override void UpdateStats(PlayerStatsManager playerStatsManager)

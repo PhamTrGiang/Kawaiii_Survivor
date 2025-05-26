@@ -16,16 +16,41 @@ public abstract class Weapon : MonoBehaviour, IPlayerStatsDependency
     [SerializeField] protected float attackDelay;
     [SerializeField] protected Animator animator;
 
+    [Header("Audio")]
+    protected AudioSource audioSource;
+
+
     protected float attackTimer;
 
     [Header("Critical")]
     protected int criticalChance;
     protected float criticalPercent;
 
+    [field: Header("Level")]
+    public int Level { get; private set; }
+
+
     [Header("Animations")]
     [SerializeField] protected float armLerp;
 
-    public int Level { get; private set; }
+    protected void Awake()
+    {
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
+        audioSource.clip = WeaponData.AttackSound;
+
+        if (animator != null && WeaponData.AnimatorOverride != null)
+            animator.runtimeAnimatorController = WeaponData.AnimatorOverride;
+    }
+
+    protected void PlayAttackSound()
+    {
+        if (!AudioManager.instance.IsSfxOn)
+            return;
+
+        audioSource.pitch = Random.Range(.95f, 1.05f);
+        audioSource.Play();
+    }
 
     protected Enemy GetClosestEnemy()
     {

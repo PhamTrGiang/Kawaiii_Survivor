@@ -227,7 +227,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50.45
+  m_fontSize: 35.5
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -579,7 +579,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.15
+  m_fontSize: 33.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -865,6 +865,7 @@ GameObject:
   - component: {fileID: 4396425929967450703}
   - component: {fileID: 2772762672635083964}
   - component: {fileID: 6933029606905289530}
+  - component: {fileID: 4434802489640590213}
   m_Layer: 5
   m_Name: Take Button
   m_TagString: Untagged
@@ -975,6 +976,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4434802489640590213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4337591333364942414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a1d66d4c942cd846aca9b4cd580e7c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4641653309484763921
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,6 +1085,7 @@ GameObject:
   - component: {fileID: 5100538997591366390}
   - component: {fileID: 3671210569505301955}
   - component: {fileID: 7188996092867028287}
+  - component: {fileID: 8400684712753409395}
   m_Layer: 5
   m_Name: Recycle Button
   m_TagString: Untagged
@@ -1182,6 +1196,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8400684712753409395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5351708134226313788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a1d66d4c942cd846aca9b4cd580e7c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5964899719573695845
 GameObject:
   m_ObjectHideFlags: 0

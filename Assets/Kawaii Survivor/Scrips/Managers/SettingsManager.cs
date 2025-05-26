@@ -52,6 +52,9 @@ public class SettingsManager : MonoBehaviour, IWantToBeSaved
     void Start()
     {
         HideCreditsPanel();
+
+        onSFXStateChanged?.Invoke(sfxState);
+        onMusicStateChanged?.Invoke(musicState);
     }
 
     // Update is called once per frame

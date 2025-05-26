@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5791207475714874811}
   - component: {fileID: 8626096739114099886}
   - component: {fileID: 7531386247901559241}
+  - component: {fileID: 5567463017571299958}
   m_Layer: 5
   m_Name: Inventory Item Container
   m_TagString: Untagged
@@ -137,6 +138,18 @@ MonoBehaviour:
   container: {fileID: 5791207475714874811}
   icon: {fileID: 6739551738704026964}
   button: {fileID: 8626096739114099886}
+--- !u!114 &5567463017571299958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469061229511561358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a1d66d4c942cd846aca9b4cd580e7c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6481736682650742827
 GameObject:
   m_ObjectHideFlags: 0
