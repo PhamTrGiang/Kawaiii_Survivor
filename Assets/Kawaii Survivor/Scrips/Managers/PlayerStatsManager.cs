@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class PlayerStatsManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class PlayerStatsManager : MonoBehaviour
 
     private void Awake()
     {
+        CharacterSelectionManager.onCharacterSelected += CharacterSelectionCallback;
+
         playerStats = playerData.BaseStats;
 
         foreach (KeyValuePair<Stat, float> kvp in playerStats)
@@ -24,6 +27,13 @@ public class PlayerStatsManager : MonoBehaviour
             objectAddends.Add(kvp.Key, 0);
         }
     }
+
+    private void OnDestroy()
+    {
+        CharacterSelectionManager.onCharacterSelected -= CharacterSelectionCallback;
+    }
+
+
 
     void Start() => UpdatePlayerStats();
 
@@ -64,5 +74,13 @@ public class PlayerStatsManager : MonoBehaviour
 
         foreach (IPlayerStatsDependency dependency in playerStatsDependencies)
             dependency.UpdateStats(this);
+    }
+
+    private void CharacterSelectionCallback(CharacterDataSO characterData)
+    {
+        playerData = characterData;
+        playerStats = playerData.BaseStats;
+
+        UpdatePlayerStats();
     }
 }

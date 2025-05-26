@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class Player : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private CircleCollider2D collider;
+    [SerializeField] private SpriteRenderer playerRenderer;
     private PlayerHealth playerHealth;
     private PlayerLevel playerLevel;
 
@@ -22,6 +24,18 @@ public class Player : MonoBehaviour
 
         playerHealth = GetComponent<PlayerHealth>();
         playerLevel = GetComponent<PlayerLevel>();
+
+        CharacterSelectionManager.onCharacterSelected += CharacterSelectionCallback;
+    }
+
+    private void CharacterSelectionCallback(CharacterDataSO characterData)
+    {
+        playerRenderer.sprite = characterData.Sprite;
+    }
+
+    private void OnDestroy()
+    {
+        CharacterSelectionManager.onCharacterSelected -= CharacterSelectionCallback; 
     }
     // Start is called before the first frame update
     void Start()

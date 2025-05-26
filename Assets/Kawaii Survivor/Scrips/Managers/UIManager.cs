@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,10 @@ public class UIManager : MonoBehaviour, IGameStateListener
     [SerializeField] private GameObject stateCompletePanel;
     [SerializeField] private GameObject waveTransitionPanel;
     [SerializeField] private GameObject shopPanel;
+    [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject restartConfirmationPanel;
+    [SerializeField] private GameObject characterSelectionPanel;
+    [SerializeField] private GameObject settingsPanel;
 
     private List<GameObject> panels = new List<GameObject>();
 
@@ -26,18 +31,22 @@ public class UIManager : MonoBehaviour, IGameStateListener
             waveTransitionPanel,
             shopPanel
         });
+
+        GameManager.onGamePaused += GamePauseCallback;
+        GameManager.onGameResume += GameResumeCallback;
+
+        pausePanel.SetActive(false);
+        HideRestartConfirmationPanel();
+
+        HideCharacterSelection();
+
+        HideSettings();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnDestroy()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        GameManager.onGamePaused -= GamePauseCallback;
+        GameManager.onGameResume -= GameResumeCallback;
     }
 
     public void GameStateChangedCallback(GameState gameState)
@@ -74,4 +83,16 @@ public class UIManager : MonoBehaviour, IGameStateListener
             p.SetActive(p == panel);
 
     }
+
+    private void GameResumeCallback() => pausePanel.SetActive(false);
+    private void GamePauseCallback() => pausePanel.SetActive(true);
+
+    public void ShowRestartConfirmationPanel() => restartConfirmationPanel.SetActive(true);
+    public void HideRestartConfirmationPanel() => restartConfirmationPanel.SetActive(false);
+
+    public void ShowCharacterSelection() => characterSelectionPanel.SetActive(true);
+    public void HideCharacterSelection() => characterSelectionPanel.SetActive(false);
+
+    public void ShowSettings() => settingsPanel.SetActive(true);
+    public void HideSettings() => settingsPanel.SetActive(false);
 }

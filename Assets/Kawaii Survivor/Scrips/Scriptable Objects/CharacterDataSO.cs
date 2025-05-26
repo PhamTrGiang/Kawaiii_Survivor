@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using NaughtyAttributes;
+using System.Runtime.CompilerServices;
 
 [CreateAssetMenu(fileName = "Character Data", menuName = "Scriptable Objects/New Character Data", order = 0)]
 public class CharacterDataSO : ScriptableObject
@@ -47,6 +48,21 @@ public class CharacterDataSO : ScriptableObject
             };
         }
         private set { }
+    }
+
+    public Dictionary<Stat, float> NonNeutralStats
+    {
+        get
+        {
+            Dictionary<Stat, float> nonNeutralStats = new Dictionary<Stat, float>();
+
+            foreach (KeyValuePair<Stat, float> kvp in BaseStats)
+                if (kvp.Value != 0)
+                    nonNeutralStats.Add(kvp.Key, kvp.Value);
+
+            return nonNeutralStats;
+        }
+        private set{}
     }
 
 }
