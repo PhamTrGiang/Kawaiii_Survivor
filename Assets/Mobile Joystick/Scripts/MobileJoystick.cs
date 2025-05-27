@@ -28,7 +28,7 @@ public class MobileJoystick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(canControl)
+        if (canControl)
             ControlJoystick();
     }
 
@@ -68,9 +68,11 @@ public class MobileJoystick : MonoBehaviour
 
         moveMagnitude = Mathf.Min(moveMagnitude, realWidth);
 
-        move = direction.normalized * moveMagnitude;
-        
-        Vector3 targetPosition = clickedPosition + move;
+        move = direction.normalized;
+
+        Vector3 knobMove = move * moveMagnitude;
+
+        Vector3 targetPosition = clickedPosition + knobMove;
 
         joystickKnob.position = targetPosition;
 
@@ -78,9 +80,5 @@ public class MobileJoystick : MonoBehaviour
             HideJoystick();
     }
 
-    public Vector3 GetMoveVector()
-    {
-        float canvasScale = GetComponentInParent<Canvas>().GetComponent<RectTransform>().localScale.x;
-        return move / canvasScale;
-    }
+    public Vector3 GetMoveVector() => move;
 }

@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [field: SerializeField] public bool UseInfiniteMap{ get; private set; }
+
     [Header("Actions")]
     public static Action onGamePaused;
     public static Action onGameResume;

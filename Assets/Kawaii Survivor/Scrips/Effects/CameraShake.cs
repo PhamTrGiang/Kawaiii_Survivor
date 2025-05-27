@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CameraShake : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class CameraShake : MonoBehaviour
     [SerializeField] private float shakeDuration;
 
     private void Awake() => RangeWeapon.onBulletShot += Shake;
-    private void Destroy() => RangeWeapon.onBulletShot -= Shake;
+    private void OnDestroy() => RangeWeapon.onBulletShot -= Shake;
     private void Shake()
     {
         Vector2 direction = Random.onUnitSphere.With(z: 0).normalized;

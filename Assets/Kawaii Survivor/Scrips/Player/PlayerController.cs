@@ -7,7 +7,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour, IPlayerStatsDependency
 {
     [Header("Elements")]
-    [SerializeField] private MobileJoystick playerJoystick;
     private Rigidbody2D rig;
 
     [Header("Settings")]
@@ -18,13 +17,12 @@ public class PlayerController : MonoBehaviour, IPlayerStatsDependency
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
-        rig.velocity = Vector2.right;
     }
 
 
     private void FixedUpdate()
     {
-        rig.velocity = playerJoystick.GetMoveVector() * moveSpeed * Time.deltaTime;
+        rig.velocity = InputManager.instance.GetMoveVector() * moveSpeed * Time.deltaTime;
     }
 
     public void UpdateStats(PlayerStatsManager playerStatsManager)
