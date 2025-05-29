@@ -10,11 +10,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    [field: SerializeField] public bool UseInfiniteMap{ get; private set; }
+    [field: SerializeField] public bool UseInfiniteMap { get; private set; }
 
     [Header("Actions")]
     public static Action onGamePaused;
     public static Action onGameResume;
+    public static Action onGameComplete;
 
     private void Awake()
     {
@@ -52,7 +53,6 @@ public class GameManager : MonoBehaviour
         else
         {
             SetGameState(GameState.SHOP);
-
         }
     }
 
@@ -75,6 +75,11 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         ManagerGameOver();
+    }
+
+    public void GameComplete()
+    {
+        onGameComplete?.Invoke();
     }
 
 }

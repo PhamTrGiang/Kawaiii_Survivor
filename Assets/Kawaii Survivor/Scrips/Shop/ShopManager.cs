@@ -79,8 +79,6 @@ public class ShopManager : MonoBehaviour, IGameStateListener
             toDestroy.RemoveAt(0);
         }
 
-
-
         int containersToAdd = 6 - containersParent.childCount;
         int weaponContainerCount = Random.Range(Mathf.Min(2, containersToAdd), containersToAdd);
         int objectContainerCount = containersToAdd - weaponContainerCount;

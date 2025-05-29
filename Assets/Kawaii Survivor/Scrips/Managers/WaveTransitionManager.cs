@@ -203,7 +203,6 @@ public class WaveTransitionManager : MonoBehaviour, IGameStateListener
     {
         chestCollected++;
 
-        Debug.Log(chestCollected + "");
     }
 
     public bool HasCollectedChest()

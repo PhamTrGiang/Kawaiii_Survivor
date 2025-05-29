@@ -132,12 +132,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <WeaponData>k__BackingField: {fileID: 11400000, guid: 514764c21f7f15245b621cc0d459485d, type: 2}
-  range: 6
+  range: 0
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
   damage: 0
-  attackDelay: 0.1
+  attackDelay: 0.5
   animator: {fileID: 9190309954542751860}
   armLerp: 12
   bulletPrefab: {fileID: 7764307725972485695, guid: b48f149634ac8ea478f096652b0ac8b6, type: 3}

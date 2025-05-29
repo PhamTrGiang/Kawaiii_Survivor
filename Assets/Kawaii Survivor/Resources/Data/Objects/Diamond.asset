@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 941c94488c588774795d95f779eccf6e, type: 3}
-  m_Name: Bike
+  m_Name: Diamond
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Bike
-  <Icon>k__BackingField: {fileID: -460769226430981451, guid: e2b501b9b8126574ba147cee4db1cf55, type: 3}
-  <Price>k__BackingField: 3
-  <RecyclePrice>k__BackingField: 1
-  <Rarity>k__BackingField: 0
+  <Name>k__BackingField: Diamond
+  <Icon>k__BackingField: {fileID: 3244622203517571467, guid: fc3de6ddeb3ec24449aa51bd6128ec01, type: 3}
+  <Price>k__BackingField: 7
+  <RecyclePrice>k__BackingField: 5
+  <Rarity>k__BackingField: 3
   statDatas:
-  - stat: 4
+  - stat: 6
+    value: 1
+  - stat: 9
     value: 5
-  - stat: 1
-    value: 5
-  - stat: 10
+  - stat: 2
     value: 5

@@ -24,9 +24,4 @@ public class EnemyMovement : MonoBehaviour
         transform.position = targetPosition;
     }
 
-
-
-
-
-
 }

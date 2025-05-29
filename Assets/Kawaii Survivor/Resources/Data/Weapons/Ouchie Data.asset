@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: OutChie
   <Sprite>k__BackingField: {fileID: 6766118796701390678, guid: 05c36890be088704da339d14a151f6b2, type: 3}
-  <PurchasePrice>k__BackingField: 100
-  <RecyclePrice>k__BackingField: 70
+  <PurchasePrice>k__BackingField: 10
+  <RecyclePrice>k__BackingField: 5
   <AttackSound>k__BackingField: {fileID: 8300000, guid: c673fb9cf3e24d443b75f2de39c6fb01, type: 3}
   <AnimatorOverride>k__BackingField: {fileID: 0}
   <Prefab>k__BackingField: {fileID: 7887455582762492888, guid: f46ff9cac470f6242a9125833160c45c, type: 3}
-  attack: 15
+  attack: 7
   attackSpeed: 1
-  criticalChance: 7
-  criticalPercent: 2
-  range: 3
+  criticalChance: 6
+  criticalPercent: 1.5
+  range: 2

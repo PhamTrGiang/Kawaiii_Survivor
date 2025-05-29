@@ -61,7 +61,7 @@ public abstract class Enemy : MonoBehaviour
         return enenmyRenderer.enabled;
     }
 
-    private void StartSpawnSepuence()
+    protected void StartSpawnSepuence()
     {
         SetRenderersVisibility(false);
 

@@ -12,6 +12,7 @@ public class CharacterSelectionManager : MonoBehaviour, IWantToBeSaved
     [SerializeField] private Transform characterButtonsParent;
     [SerializeField] private CharacterButton characterButtonsPrefab;
     [SerializeField] private Image centerCharacterImage;
+    [SerializeField] private Image menuCharacterImage;
 
     [SerializeField] private CharacterInfoPanel characterInfo;
 
@@ -41,12 +42,6 @@ public class CharacterSelectionManager : MonoBehaviour, IWantToBeSaved
 
         CharacterSelectedCallback(lastSelectedCharacterIndex);
 
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
 
@@ -93,6 +88,7 @@ public class CharacterSelectionManager : MonoBehaviour, IWantToBeSaved
 
 
         centerCharacterImage.sprite = characterDatas[index].Sprite;
+        menuCharacterImage.sprite = characterDatas[index].Sprite;
         characterInfo.Configure(characterDatas[index], unlockedStates[index]);
     }
 
@@ -124,8 +120,6 @@ public class CharacterSelectionManager : MonoBehaviour, IWantToBeSaved
             lastSelectedCharacterIndex = (int)lastSelectedCharacterObject;
 
         Initialize();
-
-        //CharacterSelectedCallback(lastSelectedCharacterIndex);
     }
 
     public void Save()

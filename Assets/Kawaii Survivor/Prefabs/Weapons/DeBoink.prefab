@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 146384649497381829}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -47,15 +47,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <WeaponData>k__BackingField: {fileID: 11400000, guid: 43c347159032e15418d322eaa271e73e, type: 2}
-  range: 3
+  range: 0
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
   damage: 0
-  attackDelay: 0.2
+  attackDelay: 1
   animator: {fileID: 6373836320460580702}
   armLerp: 12
-  <Level>k__BackingField: 1
   hitDetectionTransform: {fileID: 1826485583411231118}
   hitCollider: {fileID: 5277472517426589575}
 --- !u!95 &6373836320460580702

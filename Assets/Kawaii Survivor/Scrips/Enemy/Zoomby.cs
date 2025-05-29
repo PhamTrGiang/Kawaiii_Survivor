@@ -35,6 +35,7 @@ public class Zoomby : Enemy
 
     private void Awake()
     {
+        health = maxHealth;
         attack = GetComponent<RangeEnemyAttack>();
 
         state = State.None;
@@ -44,6 +45,11 @@ public class Zoomby : Enemy
         onDamageTaken += DamageTakenCallback;
     }
 
+    protected override void Start()
+    {
+        base.Start();
+    }
+
     private void OnDestroy()
     {
         onSpawnSequenceCompleted -= SpawnSequenceCompleted;
@@ -51,12 +57,6 @@ public class Zoomby : Enemy
 
     }
 
-
-    // Start is called before the first frame update
-    protected override void Start()
-    {
-        base.Start();
-    }
 
     // Update is called once per frame
     void Update()
@@ -83,17 +83,20 @@ public class Zoomby : Enemy
         }
     }
 
+    private void OnEnable()
+    {
+        SetIdleState();
+    }
+
     private void SetIdleState()
     {
         state = State.Idle;
-
         idleDuration = Random.Range(1f, maxIdleDuration);
-
-        animator.Play("Idle");
     }
 
     private void ManageIdleState()
     {
+        animator.Play("Idle");
         timer += Time.deltaTime;
         if (timer > idleDuration)
         {
@@ -105,17 +108,14 @@ public class Zoomby : Enemy
     private void StartMovingState()
     {
         state = State.Moving;
-
         targetPosition = GetRandomPosition();
-
-        animator.Play("Move");
     }
 
     private void ManageMovingState()
     {
+        animator.Play("Move");
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-
-        if (Vector2.Distance(transform.position, targetPosition) < (.01f))
+        if (Vector2.Distance(transform.position, targetPosition) < 0.01f)
         {
             StartAttackingState();
         }
@@ -125,13 +125,12 @@ public class Zoomby : Enemy
     {
         state = State.Attacking;
         animator.Play("Attack");
-
         attackCounter = 0;
     }
 
     private void ManageAttackingState()
     {
-
+        
     }
 
     private void Attack()
@@ -148,8 +147,6 @@ public class Zoomby : Enemy
     {
         healthBar.gameObject.SetActive(true);
         UpdateHealthBar();
-
-        SetIdleState();
     }
 
     private void UpdateHealthBar()

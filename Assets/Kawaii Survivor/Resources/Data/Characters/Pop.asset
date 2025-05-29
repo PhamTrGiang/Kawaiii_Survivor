@@ -15,15 +15,15 @@ MonoBehaviour:
   <Name>k__BackingField: Pop
   <Sprite>k__BackingField: {fileID: 21300000, guid: 1b2a36f142a2e99459ea6a99b304416d, type: 3}
   <PurchasePrice>k__BackingField: 300
-  attack: 3
-  attackSpeed: 0
-  criticalChance: 0
-  criticalPercent: 0
-  moveSpeed: 2
-  maxHealth: -7
-  range: 0
-  healthRecoverySpeed: 0
-  armor: 0
+  attack: 20
+  attackSpeed: 2
+  criticalChance: 2
+  criticalPercent: 2
+  moveSpeed: 1
+  maxHealth: -5
+  range: 1
+  healthRecoverySpeed: 3
+  armor: 1
   luck: 0
-  dodge: 0
-  lifeSteal: 0
+  dodge: 2
+  lifeSteal: 5

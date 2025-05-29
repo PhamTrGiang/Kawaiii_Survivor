@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Dave
   <Sprite>k__BackingField: {fileID: 21300000, guid: 7ee7aeee63c643342a6efd22a4cf751d, type: 3}
-  <PurchasePrice>k__BackingField: 1000
-  attack: 10
-  attackSpeed: 0
+  <PurchasePrice>k__BackingField: 600
+  attack: 30
+  attackSpeed: 5
   criticalChance: 0
   criticalPercent: 0
-  moveSpeed: 0
-  maxHealth: 0
-  range: 10
-  healthRecoverySpeed: 0
-  armor: 0
-  luck: 0
-  dodge: 0
-  lifeSteal: 0
+  moveSpeed: 2
+  maxHealth: 10
+  range: 1
+  healthRecoverySpeed: 1
+  armor: 5
+  luck: 2
+  dodge: 1
+  lifeSteal: 3

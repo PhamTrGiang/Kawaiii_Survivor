@@ -105,6 +105,7 @@ public class WaveManager : MonoBehaviour, IGameStateListener
             ui.UpdateWaveText("Stage Completed");
 
             GameManager.instance.SetGameState(GameState.STATECOMPLETE);
+
         }
         else
             GameManager.instance.WaveCompletedCallback();

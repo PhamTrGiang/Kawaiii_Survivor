@@ -5195,7 +5195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecbd2ddab0a56014eb3cebea27c8857c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 6
   enenmyRenderer: {fileID: 3083962297359473528}
   spawnIndicator: {fileID: 5850826787001895887}
   collider: {fileID: 35928777207367485}
@@ -5216,8 +5216,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingPoint: {fileID: 2525259840442861577}
   bulletPrefab: {fileID: 7562195731393675740, guid: d9221cd60b10f1a4a8700893156fbf95, type: 3}
-  damage: 1
-  attackFrequency: 1
+  damage: 3
+  attackFrequency: 0.7
 --- !u!114 &141599371976000107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5230,7 +5230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e02dc7b9ab2c90140b1d299bff0c18c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 3
 --- !u!58 &35928777207367485
 CircleCollider2D:
   m_ObjectHideFlags: 0
