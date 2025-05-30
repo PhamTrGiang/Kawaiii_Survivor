@@ -23,7 +23,7 @@ Players control a character that **automatically attacks**, dodges incoming enem
 - **Unity Engine (2D)**
 - **C# Programming**
 - **Unity Input System**
-- **DOTween** – For smooth UI and visual transitions
+- **LeanTween** – For smooth UI and visual transitions
 - **Object Pooling** – To improve performance when spawning/despawning large numbers of enemies and bullets
 - **Unity Profiler** – For runtime debugging and optimization
 
@@ -35,7 +35,7 @@ To run this project locally:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/survivor-arena.git
+   https://github.com/PhamTrGiang/Kawaiii_Survivor
 2. Open with Unity (Unity version 2021.3 or higher recommended)
 
 3. Press Play in the Unity Editor to test
