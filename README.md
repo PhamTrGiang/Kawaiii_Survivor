@@ -48,7 +48,7 @@ To run this project locally:
 
 ---
 
-📚 Learning Goals
+## 📚 Learning Goals
 This project was built to improve my understanding of:
 
 Structuring a Unity 2D project
@@ -66,6 +66,8 @@ Basic performance optimization
 ## 📌 Status
 ✅ Core gameplay complete
 🔄 Open for future improvements (e.g., new weapons, enemy types, upgrade variety)
+
+---
 
 ## 🙋‍♂️ About Me
 I’m a student and aspiring Unity developer, passionate about building fun, responsive, and creative gameplay experiences. This is one of my early personal projects to explore game development from the ground up.
