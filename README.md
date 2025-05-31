@@ -46,6 +46,13 @@ To run this project locally:
 
 ## 📸 Screenshots
 
+![Screenshot 2025-05-31 175713](https://github.com/user-attachments/assets/0aa8c644-7f39-4d44-9218-ff54904e6421)
+![Screenshot 2025-05-31 175724](https://github.com/user-attachments/assets/c2b9b84d-fca1-4af1-ac04-0d0d7128b55a)
+![Screenshot 2025-05-31 180036](https://github.com/user-attachments/assets/67300f60-67f2-49ff-b15c-b2a61055a821)
+![Screenshot 2025-05-31 175906](https://github.com/user-attachments/assets/fdc6b638-128f-49da-8474-e302ffe5b8d7)
+![Screenshot 2025-05-31 175911](https://github.com/user-attachments/assets/71db70d9-9567-42bf-830e-1dc16858863c)
+![Screenshot 2025-05-31 175930](https://github.com/user-attachments/assets/03b3957d-557d-4356-8b04-a133ebd191b8)
+
 ---
 
 ## 📚 Learning Goals
@@ -71,3 +78,8 @@ Basic performance optimization
 
 ## 🙋‍♂️ About Me
 I’m a student and aspiring Unity developer, passionate about building fun, responsive, and creative gameplay experiences. This is one of my early personal projects to explore game development from the ground up.
+
+---
+
+##📄 License
+This project is open-source and free to use for learning purposes.
