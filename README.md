@@ -4,6 +4,11 @@
 
 Players control a character that **automatically attacks**, dodges incoming enemies, collects experience points (XP), and selects random upgrades to survive for as long as possible against endless waves of increasingly difficult enemies.
 
+YouTube:
+   ```bash
+   https://github.com/PhamTrGiang/Kawaiii_Survivor
+   ```
+
 ---
 
 ## 🎮 Gameplay Features
@@ -78,5 +83,5 @@ I’m a student and aspiring Unity developer, passionate about building fun, res
 
 ---
 
-##📄 License
+## 📄License
 This project is open-source and free to use for learning purposes.
