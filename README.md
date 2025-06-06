@@ -1,6 +1,6 @@
-# 🕹️ Survivor Arena
+# 🕹️ Kawaii Survivor
 
-**Survivor Arena** is a 2D top-down survival game inspired by **Brotato** and **Vampire Survivors**, developed using Unity and C#. This project was created as part of a game development course to explore core gameplay systems such as wave spawning, AI behavior, skill upgrades, and performance optimization.
+**Kawaii Survivor** is a 2D top-down survival game inspired by **Brotato** and **Vampire Survivors**, developed using Unity and C#. This project was created as part of a game development course to explore core gameplay systems such as wave spawning, AI behavior, skill upgrades, and performance optimization.
 
 Players control a character that **automatically attacks**, dodges incoming enemies, collects experience points (XP), and selects random upgrades to survive for as long as possible against endless waves of increasingly difficult enemies.
 
