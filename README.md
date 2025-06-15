@@ -30,10 +30,10 @@ Players control a character that **automatically attacks**, dodges incoming enem
 - **LeanTween** – for smooth UI transitions and tween animations
 - **Unity Profiler** – for runtime performance analysis and debugging
 - **Design Patterns:**
-      - **Object Pooling** – to optimize performance with frequent object spawning
-      - **Singleton** – to manage global systems (e.g., GameManager)
-      - **Observer** – for event-driven communication between game systems
-      - **State Machine** – to control enemy AI and game states
+   - **Object Pooling** – to optimize performance with frequent object spawning
+   - **Singleton** – to manage global systems (e.g., GameManager)
+   - **Observer** – for event-driven communication between game systems
+   - **State Machine** – to control enemy AI and game states
   
 ---
 
